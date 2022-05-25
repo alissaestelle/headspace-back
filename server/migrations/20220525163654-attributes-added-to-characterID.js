@@ -8,12 +8,12 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.changeColumn('characters', 'userID', {
+    await queryInterface.changeColumn('achievements', 'characterID', {
       type: Sequelize.INTEGER,
+      allowNull: true,
       onDelete: 'CASCADE',
-      allowNull: false,
       references: {
-        model: 'users',
+        model: 'characters',
         key: 'id'
       }
     })
@@ -26,8 +26,8 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.changeColumn('characters', 'userID', {
-      userID: Sequelize.INTEGER
+    await queryInterface.changeColumn('achievements', 'characterID', {
+      characterID: Sequelize.INTEGER
     })
   }
 }
