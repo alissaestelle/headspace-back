@@ -10,13 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Character.belongsTo(models.User, {
-        foreignKey: {
-          name: 'userID',
-          allowNull: false
-        }
+        foreignKey: 'userID'
       })
       Character.hasMany(models.Achievement, {
-        onDelete: 'CASCADE'
+        foreignKey: 'characterID'
       })
     }
   }
@@ -25,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       userID: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'users',
           key: 'id'

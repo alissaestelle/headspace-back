@@ -9,7 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       characterID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'characters',
+          key: 'id'
+        }
       },
       title: {
         type: Sequelize.STRING
